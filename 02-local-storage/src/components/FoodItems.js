@@ -25,6 +25,7 @@ class FoodItems extends React.Component {
       padding: "10px 0px",
       fontWeight: 100,
       display: "flex",
+      backgroundColor: 'yellow'
     }
     
     var fooditems = this.props.items.map((food, i) => {

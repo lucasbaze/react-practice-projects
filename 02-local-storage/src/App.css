@@ -1,0 +1,25 @@
+html {
+  min-height: 100vh;
+  background: url('http://wes.io/hx9M/oh-la-la.jpg') center no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  text-align: center;
+  font-family: Futura,"Trebuchet MS",Arial,sans-serif
+}
+
+*, *:before, *:after {box-sizing: inherit; }
+
+
+input[type="submit"]{
+      background-color: '#4CAF50';
+      border: 'none';
+      color: 'white',;
+      padding: 10px 20px;
+      text-align: 'center';
+      text-decoration: 'none';
+      display: 'inline-block';
+      font-size: 16px;
+}

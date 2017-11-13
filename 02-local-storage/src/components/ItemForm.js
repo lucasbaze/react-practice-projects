@@ -6,11 +6,14 @@ import FoodItems from './FoodItems.js';
 class ItemForm extends React.Component {
   constructor(props){
     super(props);
+    //These were created to so that I can set the value of the input and price
+    //foodItems will hold all of the foodItems input from the form
     this.state = {
       value: '',
       price: 0,
       foodItems: []
     }
+    //all this stupid binding
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handlePriceChange = this.handlePriceChange.bind(this);
@@ -21,26 +24,32 @@ class ItemForm extends React.Component {
   }
 
   handleChange(e){
+    //handle the change of the text input
     this.setState({value: e.target.value});
   }
 
   handlePriceChange(e){
+    //handle the change of the price input
   	this.setState({price: e.target.value});
   }
 
   handleSubmit(e){
+    //don't let the form reload the page
     e.preventDefault();
+    //create a fooditem based on the entry fields and the state
     let fooditem = {
       foodName: this.state.value,
       checked: false,
       price: this.state.price
     };
+    //add the item to the array
     this.state.foodItems.push(fooditem);
-    console.log(this.state.foodItems);
+    //set the state and reset the input form
     this.setState({foodItems: this.state.foodItems, value: '', price: ''});
   }
 
   checkAll(){
+    //map over the food items and change all the checked values
     let checkedItems = this.state.foodItems.map(food => {
       food.checked = true;
       return food;
@@ -51,6 +60,7 @@ class ItemForm extends React.Component {
   }
 
   unCheckAll(){
+    //map over the food items and uncheck all the food item values
     let unCheckedItems = this.state.foodItems.map(food => {
       food.checked = false;
       return food;
@@ -60,7 +70,9 @@ class ItemForm extends React.Component {
   }
 
   updateToggle(element){
+    //set index to the data-index value
     const index = Number(element.target.dataset.index);
+    //map ove the array and find the element with the same index value and change that bitch to the opposite
     let updatedItem = this.state.foodItems.map((food, i) => {
         if(index == i){
          food.checked = !food.checked;
@@ -69,20 +81,23 @@ class ItemForm extends React.Component {
         return food;
       }
     })
-    console.log(updatedItem);
-
+    //Update the state
     this.setState({foodItems: updatedItem});
   }
 
   removeListItem(element){
+    //set the data-index to index
   	const index = Number(element.target.dataset.index);
-  	let updateFoodItems = this.state.foodItems;
+  	//create a new array from state
+    let updateFoodItems = this.state.foodItems;
+    //remove the item from the new array
   	updateFoodItems.splice(index, 1);
+    //update the state with the new spliced arrary
   	this.setState({foodItems: updateFoodItems})
   }
 
   render(){
-
+    //My shitty styling
   	const ulStyle = {
   		margin: 0,
   		padding: 0,
@@ -111,7 +126,7 @@ class ItemForm extends React.Component {
       fontSize: 16
 	}
 
-
+    //I feel like you can read this stuff hear and figure it out... I pass a lot of shit around, so I definitely could improve up somewhere
     return (
       <div>
         <ul style={ulStyle}>

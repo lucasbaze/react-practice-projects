@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
+//This checks all of the list items with a positive element
 class CheckAll extends React.Component {
   constructor(props){
     super(props);
@@ -7,6 +9,7 @@ class CheckAll extends React.Component {
   }
 
   handleClick(){
+    //This is a function passed down from ItemForm
     this.props.onClick();
   }
 
@@ -17,3 +20,9 @@ class CheckAll extends React.Component {
 }
 
 export default CheckAll;
+
+
+//Make sure the props included are functions
+CheckAll.propTypes = {
+  onClick: PropTypes.func
+}

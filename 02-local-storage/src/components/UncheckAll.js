@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 
 class UncheckAll extends React.Component {
   constructor(props){
@@ -17,3 +17,7 @@ class UncheckAll extends React.Component {
 }
 
 export default UncheckAll;
+
+UncheckAll.propTypes = {
+  onClick: PropTypes.func
+}

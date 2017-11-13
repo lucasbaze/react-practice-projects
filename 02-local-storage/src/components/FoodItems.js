@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 
 //This takes the FoodItems and outputs the corresponding DOM to populate the current Tapas list
 class FoodItems extends React.Component {
@@ -10,7 +10,6 @@ class FoodItems extends React.Component {
   }
 
   handleClick(key){
-    if(!key.target.matches('input')) return;
     this.props.onClick(key);
   }
 
@@ -28,14 +27,16 @@ class FoodItems extends React.Component {
       backgroundColor: 'yellow'
     }
     
+    //Create a list item for each food item
     var fooditems = this.props.items.map((food, i) => {
       
+      //This is basically a way to decide if the element is check or not
       let isChecked = food.checked ? 'checked' : '';
       return (
           <li style={liStyle} key={i}>
             <input type="checkbox" id={`item${i}`} data-index={i} checked={isChecked} onClick={this.handleClick}/>
             <label htmlFor={`item${i}`} onClick={this.handleClick}>{food.foodName}</label>
-            <label htmlFor={`item${i}`}>{food.price}</label>
+            <label htmlFor={`item${i}`}>Price: {food.price}</label>
             <input type="button" id={`item${i}`} data-index={i} value="x" onClick={this.removeListItem}/>
           </li>
       )
@@ -47,8 +48,9 @@ class FoodItems extends React.Component {
 
 export default FoodItems; 
 
-/*
+
 FoodItems.propTypes = {
-  items: PropType.object,
+  items: PropTypes.array,
+  onClick: PropTypes.func,
+  removeButton: PropTypes.func
 }
-*/

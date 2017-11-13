@@ -23,7 +23,7 @@ class FoodItems extends React.Component {
     const liStyle = {
       borderBottom: "1px solid rgba(0,0,0,0.2)",
       padding: "10px 0px",
-      fontWeight: 100,
+      fontWeight: 200,
       display: "flex",
       backgroundColor: 'yellow'
     }
